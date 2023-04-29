@@ -1,7 +1,13 @@
 const app = require("express")()
 const path = require("path")
-
-app.use("/", function (req, res, next) {
+app.get("/", (req, res) => {
+ const data = `1.MTD
+    2.MTR
+    3.MTM
+    `
+ res.send(data)
+})
+app.use("/s", function (req, res, next) {
  const options = {
   root: path.join(__dirname),
  }
@@ -22,13 +28,6 @@ app.use("/", function (req, res, next) {
    next()
   }
  })
-})
-app.get("/", (req, res) => {
- const data = `1.MTD
-    2.MTR
-    3.MTM
-    `
- res.send(data)
 })
 
 app.listen(3000)
